@@ -2,75 +2,14 @@
 <html>
 
 <head>
-    <script type = "text/javascript" 
-    src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
- </script>
+      <link rel="stylesheet" type="text/css" href="table.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+    <script src="table.js"></script>
 </head>
 
 <body>
         <h1>.........Dynamic Table.......... </h1>
 </body>
-<script>
-        $(document).ready(function() {
-				
-               $.getJSON("https://jsonplaceholder.typicode.com/posts", function(arr) {
-                    // key and values....
-        var key = Object.keys(arr[0]);
-        var value = arr.map((elements) => {
-            return Object.values(elements);
-        });
-
-         // CREATE DYNAMIC TABLE.
-         var table = document.createElement('table');
-        table.setAttribute('id', 'prevtable');
-
-
-        // Table Header......
-        var tr = document.createElement('tr');
-        for (let i = 0; i < key.length; i++) {
-            var th = document.createElement('th');
-            th.setAttribute('id', key[i]);
-            var text = document.createTextNode(key[i]);
-            th.appendChild(text);
-            tr.appendChild(th);
-        }
-        table.appendChild(tr);
-
-        // Table Definition......
-        for (let i = 0; i < value.length; i++) {
-            tr = document.createElement('tr');
-            for (let j = 0; j < key.length; j++) {
-                var td = document.createElement('td');
-                var text = document.createTextNode(value[i][j]);
-                td.appendChild(text);
-                tr.appendChild(td);
-            }
-            table.appendChild(tr);
-        }
-        document.body.appendChild(table);
-    
-         });
-					
-            });
-</script>
-
 </html>
-<style>
-    table,
-    th,
-    td {
-        font: 17px Calibri;
-        border: solid 2px rgb(10, 10, 10);
-        border-collapse: collapse;
-        padding: 2px 3px;
-        text-align: center;
-        margin: 10px 0;
-      background:papayawhip;
-    }
 
-    th {
-        font-weight: bold;
-        background: skyblue;
-    }
-   
-</style>
